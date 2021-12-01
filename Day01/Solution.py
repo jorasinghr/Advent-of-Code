@@ -1,5 +1,5 @@
 ###Advent of Code###
-with open('Day01.txt') as f:
+with open('input.txt') as f:
     lines = [int(x) for x in f.read().split()]
 
 # task 1
