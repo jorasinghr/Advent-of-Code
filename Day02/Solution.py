@@ -5,7 +5,7 @@ with open('Day02\input.txt') as f:
 # Task 1
 depth = 0
 horizontal_pos = 0
-for id, val in enumerate(lines):
+for _, val in enumerate(lines):
     move, num = val.split()
     if move == 'forward':
         horizontal_pos += int(num)
@@ -24,7 +24,7 @@ depth = 0
 horizontal_pos = 0
 aim = 0
 
-for id, val in enumerate(lines):
+for _, val in enumerate(lines):
     move, num = val.split()
     num = int(num)
     if move == 'forward':
