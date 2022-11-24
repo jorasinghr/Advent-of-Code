@@ -1,0 +1,9 @@
+{
+	"name": "rogfkADF",
+	"location": "norwayeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "99d6b80e-9f6d-4f20-8343-b06b75a82fc0",
+		"tenantId": "e2a7fc76-2989-4d79-a54d-25dec1c562f6"
+	}
+}
