@@ -76,30 +76,31 @@ def fill_grdi2(coords):
                     grid2[val[0][1]][i] += 1
             else:
                 for i in range(val[1][0], val[0][0]+1):
-                    grid2[val[1][1]][i] += 1
-                
+                    grid[val[1][1]][i] += 1
                     
         if abs(val[0][0] - val[1][0]) == abs(val[0][1] - val[1][1]):
             #diagonal, if x1=y2 and x2=y1 its diagonal or if x1=y1 and x2=y2 its diagonal
             if val[0][0] > val[1][0]:
+     
                 if val[0][1] > val[1][1]:
-                    print(1, range(0, val[0][0] - val[1][0] - 1))
-                    for i in range(0, val[0][0] - val[1][0] -1):
+                    print(1)
+                    for i in range(0, val[0][0] - val[1][0] + 1):
                         grid2[val[0][0] - i][val[0][1] - i] += 1
                 else:
-                    print(2, range(0, val[0][0] - val[1][0] - 1))
-                    for i in range(0, val[0][0] - val[1][0] ):
+                    print(2)
+                    for i in range(0, val[0][0] - val[1][0] + 1):
                         grid2[val[0][0] - i][val[0][1] + i] += 1
                 
             else:
                 if val[0][1] > val[1][1]:
-                    print(3, range(0,-( val[0][0] - val[1][0] - 1)))
-                    for i in range(0, -(val[0][0] - val[1][0] )):
+                    print(3)
+                    for i in range(0, val[0][0] - val[1][0] + 1):
+                        print(i)
                         grid2[val[0][0] + i][val[0][1] - i] += 1
                 else:
-                    print(4, range(0, -(val[0][0] - val[1][0] - 1)))
-                    for i in range(0, -(val[0][0] - val[1][0] - 1)):
+                    print(4)
+                    for i in range(0, val[0][0] - val[1][0] + 1):
                         grid2[val[0][0] + i][val[0][1] + i] += 1
                         
 fill_grdi2(coord2)
-print(count_grid(grid2, 10)) #19575-h
+print(count_grid(grid2, 10))
