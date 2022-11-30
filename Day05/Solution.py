@@ -1,15 +1,16 @@
+## Created with Github Copilot ##
+
+
 #Task 1
 
 #create 10x10 grid 
-def create_grid():
-    grid = [[0 for x in range(1000)] for y in range(1000)]
+def create_grid(grid_size=1000):
+    grid = [[0 for x in range(grid_size)] for y in range(grid_size)]
     return grid
-
-grid = create_grid()
 
 # read lines in txt file
 def read_lines_txt():
-    with open('input.txt') as f:
+    with open('test_input.txt') as f:
         lines = f.readlines()
     
     coord = []
@@ -23,8 +24,8 @@ def read_lines_txt():
 
 
 # for each coordinate pair, add 1 to grid
-def fill_grdi():
-    for val in coord:
+def fill_grdi(coords):
+    for val in coords:
         if val[0][0] == val[1][0]: # same x coords
             if val[0][1] < val[1][1]:
                 for i in range(val[0][1], val[1][1]+1):
@@ -42,22 +43,63 @@ def fill_grdi():
         
 
 #count number of numbers above 1 in a grid
-def count_grid():
+def count_grid(grid_name, grid_size=1000):
     count = 0
-    for i in range(1000):
-        for j in range(1000):
-            if grid[i][j] > 1:
+    for i in range(grid_size):
+        for j in range(grid_size):
+            if grid_name[i][j] > 1:
                 count += 1
     return count
         
 grid = create_grid()   
-coord = read_lines_txt()
-fill_grdi()
-count = count_grid()
-print(count)
+fill_grdi(read_lines_txt())
+#print(count_grid(grid))
 
 
 #Task 2
 
-grid2 = create_grid()
+grid2 = create_grid(10)
 coord2 = read_lines_txt()
+
+def fill_grdi2(coords):
+    for val in coords:
+        if val[0][0] == val[1][0]: # same x coords
+            if val[0][1] < val[1][1]:
+                for i in range(val[0][1], val[1][1]+1):
+                    grid2[i][val[0][0]] += 1
+            else:
+                for i in range(val[1][1], val[0][1]+1):
+                    grid2[i][val[1][0]] += 1 
+        if val[0][1] == val[1][1]: #same y coords
+            if val[0][0] < val[1][0]:
+                for i in range(val[0][0], val[1][0]+1):
+                    grid2[val[0][1]][i] += 1
+            else:
+                for i in range(val[1][0], val[0][0]+1):
+                    grid2[val[1][1]][i] += 1
+                
+                    
+        if abs(val[0][0] - val[1][0]) == abs(val[0][1] - val[1][1]):
+            #diagonal, if x1=y2 and x2=y1 its diagonal or if x1=y1 and x2=y2 its diagonal
+            if val[0][0] > val[1][0]:
+                if val[0][1] > val[1][1]:
+                    print(1, range(0, val[0][0] - val[1][0] - 1))
+                    for i in range(0, val[0][0] - val[1][0] -1):
+                        grid2[val[0][0] - i][val[0][1] - i] += 1
+                else:
+                    print(2, range(0, val[0][0] - val[1][0] - 1))
+                    for i in range(0, val[0][0] - val[1][0] ):
+                        grid2[val[0][0] - i][val[0][1] + i] += 1
+                
+            else:
+                if val[0][1] > val[1][1]:
+                    print(3, range(0,-( val[0][0] - val[1][0] - 1)))
+                    for i in range(0, -(val[0][0] - val[1][0] )):
+                        grid2[val[0][0] + i][val[0][1] - i] += 1
+                else:
+                    print(4, range(0, -(val[0][0] - val[1][0] - 1)))
+                    for i in range(0, -(val[0][0] - val[1][0] - 1)):
+                        grid2[val[0][0] + i][val[0][1] + i] += 1
+                        
+fill_grdi2(coord2)
+print(count_grid(grid2, 10)) #19575-h
